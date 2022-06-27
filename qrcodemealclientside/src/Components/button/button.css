@@ -1,0 +1,10 @@
+.rounded-btn{
+    border: none;
+    outline: none;
+    border: 2px solid #FFE600;
+    width: 100%;
+    padding: 8px;
+    background-color: transparent;
+    color: #FFE600;
+    border-radius: 20px;
+}

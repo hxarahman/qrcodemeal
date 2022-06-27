@@ -1,0 +1,28 @@
+.App{
+    width: 100%;
+}
+
+.app-nested{
+    width: 100%;
+}
+
+.null-box{
+    display: none;
+}
+
+
+@media only screen and (min-width:1024px){
+    .App{
+        display: flex;
+    }
+    .app-nested{
+        width: 30%;
+        border-right: 1px solid rgb(63, 63, 63);
+    }
+    .null-box{
+        display: flex;
+        width: 70%;
+        align-items: center;
+        justify-content: center;
+    }
+}
