@@ -1,0 +1,58 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.welcome-main {
+    margin-bottom: 50px;
+}
+
+.bgImage {
+    background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80');
+    background-size: cover;
+    height: 250px;
+    overflow: hidden;
+}
+
+.food_name {
+    margin: 0px;
+    padding: 5px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Nunito Sans';
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.calories {
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0px;
+    margin-left: 5px;
+    color: white;
+}
+
+.discription {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.counter {
+    margin: 0px;
+    font-size: 25px;
+    font-family: 'Nunito Sans';
+    margin-left: 10px;
+    margin-right: 10px;
+    color: yellow;
+}

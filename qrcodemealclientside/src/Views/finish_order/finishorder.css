@@ -1,0 +1,66 @@
+:root {
+    --borderColor: #FFFFFF;
+}
+
+
+.finishorder_main {
+    padding: 12px;
+}
+
+.personal_info_section {
+    border-bottom: 1px solid var(--borderColor);
+    padding-bottom: 50px;
+}
+
+.location_btn {
+    border: none;
+    outline: none;
+    border: 1px solid var(--borderColor);
+    background-color: transparent;
+    padding: 9px 15px;
+    border-radius: 25px;
+}
+
+.location_btn:hover {
+    background-color: rgb(246, 246, 0, .1) !important;
+}
+
+
+.location_btn span {
+    font-size: 18px;
+}
+
+.heading {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+
+}
+
+
+.delivery_time_section{
+    border-bottom: 1px solid var(--borderColor);
+    padding-bottom: 7rem;
+}
+
+.radio_btn{
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+
+.icon_sectin{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.label_section{
+    margin-left: 12px;
+}

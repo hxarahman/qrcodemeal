@@ -1,0 +1,50 @@
+.card_div {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  justify-content: space-between;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.first_para {
+  color: white;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  padding: 0px;
+}
+.second_para {
+  color: white;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.third_para {
+  color: yellow;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.icon_image {
+  width: 24px;
+  height: 24px;
+
+  margin: 0px 10px 0px 0px;
+  border-radius: 50px;
+}
+
+.add_to_cart {
+  position: absolute;
+  left: 92%;
+  top: 100%;
+  /* position: absolute, */
+  /* left: "92%",
+    top: "100%", */
+}

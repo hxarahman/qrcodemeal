@@ -8,27 +8,27 @@
 // import Card from "../../Components/cards/Card";
 
 const card_detial = [
-  {
-      heading: 'Chefs Special Salad',
-      discription: `Fresh beetroot salad served with
-      crumbled goat cheese, walnuts, and
-      tomatoes`,
-      price: `AED 15.00 - AED 60.00`
-  },
-  {
-      heading: `Chef's Special Salad`,
-      discription: `Fresh beetroot salad served with
-      crumbled goat cheese, walnuts, and
-      tomatoes`,
-      price: `AED 15.00`
-  },
-  {
-      heading: `Chef's Special Salad`,
-      discription: `Fresh beetroot salad served with
-      crumbled goat cheese, walnuts, and
-      tomatoes`,
-      price: `AED 15.00 - AED 60.00`
-  },
+    {
+        heading: 'Chefs Special Salad',
+        discription: `Fresh beetroot salad served with
+        crumbled goat cheese, walnuts, and
+        tomatoes`,
+        price: `AED 15.00 - AED 60.00`
+    },
+    {
+        heading: `Chef's Special Salad`,
+        discription: `Fresh beetroot salad served with
+        crumbled goat cheese, walnuts, and
+        tomatoes`,
+        price: `AED 15.00`
+    },
+    {
+        heading: `Chef's Special Salad`,
+        discription: `Fresh beetroot salad served with
+        crumbled goat cheese, walnuts, and
+        tomatoes`,
+        price: `AED 15.00 - AED 60.00`
+    },
 ]
 
 // const Index = () => {
@@ -37,7 +37,7 @@ const card_detial = [
 //             <Header />
 //             <div className="container-fluid">
 //                 <div>
-
+ 
 //                     <div>
 //                         <h5 style={{ color: colors.yellow, textAlign: 'center', fontSize: '18px', fontFamily: 'arial' }}>Main Menu</h5>
 //                     </div>
@@ -93,7 +93,7 @@ const card_detial = [
 //                 </div> */}
 //                    {/* <Card />    */}
 //                    {/* <Card />    */}
-            
+              
 
 //             </div>
 //         </div>)
@@ -112,37 +112,37 @@ import Header from "../../Components/header";
 import Card from "../../Components/cards/Card";
 
 const Index = () => {
-return (
-  <div className="welcome-main">
-    <Header />
-    <div className="container-fluid">
-      <div>
-        <h5 className="main_menu">Main Menu</h5>
-        <h5 className="main_menu_child">
-          All your favorites available for delivery & pick-up!
-        </h5>
-      </div>
-      {/* images */}
-      <div></div>
-      {/* //// */}
+  return (
+    <div className="welcome-main">
+      <Header />
+      <div className="container-fluid">
+        <div>
+          <h5 className="main_menu">Main Menu</h5>
+          <h5 className="main_menu_child">
+            All your favorites available for delivery & pick-up!
+          </h5>
+        </div>
+        {/* images */}
+        <div></div>
+        {/* //// */}
 
-      <div>
-        <h5 className="main_menu">All Item</h5>
-        <h5 className="main_menu_child">Fresh and organic ingredients</h5>
+        <div>
+          <h5 className="main_menu">All Item</h5>
+          <h5 className="main_menu_child">Fresh and organic ingredients</h5>
+        </div>
+        {/* box  */}
+        {card_detial.map((item, index) => {
+                    return (
+                        <Card
+                            Heading={item.heading}
+                            Discription={item.discription}
+                            Price={item.price}
+                        />
+                    )
+                })}
       </div>
-      {/* box  */}
-      {card_detial.map((item, index) => {
-                  return (
-                      <Card
-                          Heading={item.heading}
-                          Discription={item.discription}
-                          Price={item.price}
-                      />
-                  )
-              })}
     </div>
-  </div>
-);
+  );
 };
 
 export default Index;
