@@ -7,34 +7,31 @@ const Index = (props) => {
   const [back, setBack] = useState(false);
 
   return (
-
-    <div className="header-main d-flex">
-      <div className="w-25">
-
+    <div className="header-main">
+      <div className="">
         {props.back ? (
           <div className="icon-container">
             <IoIosArrowBack color="rgba(255, 255, 255, .3)" size={20} />
           </div>
-        ) : null}
+        ) : <div className="icon-container-disable">
+          <IoIosArrowBack color="rgb(141, 39, 49 , 0.1)" size={20} />
+        </div>}
       </div>
-
-      <div className="w-50 d-flex justify-content-center align-items-end">
-          <h4 style={{fontSize:20,color:"white"}}>{props.title}</h4>
-      </div>
-      <div className="w-25 d-flex justify-content-end">
-        <div className="icon-container">
-          <BiMenuAltRight color="rgba(255, 255, 255, .3)" size={20} />
-        </div>
-
+      <div >
+        <p className="heading">
+          {props.title}
+        </p>
       </div>
       {!props.toggle ?
-        <div className="w-50 d-flex justify-content-end">
+        <div className=" d-flex justify-content-end">
           <div className="icon-container">
             <BiMenuAltRight color="rgba(255, 255, 255, .3)" size={20} />
           </div>
         </div>
         :
-        null
+        <div className="icon-container-disable">
+          <BiMenuAltRight color="rgb(141, 39, 49 , 0.1)" size={20} />
+        </div>
       }
 
     </div>

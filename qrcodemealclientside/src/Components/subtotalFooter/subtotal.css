@@ -1,0 +1,83 @@
+
+@keyframes height {
+    from {
+        height: 80px;
+        transition: height 1s ease;
+    }
+}
+
+:root {
+    --bgcolor: whitesmoke;
+}
+
+
+
+.subtotal_main_container{
+    background-color: var(--bgcolor);
+    position: fixed;
+    width: 30%;
+    bottom:55px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: rgb(0 0 0 / 15%) 2px 2px 10px;
+    padding: 5px 12px 5px 12px;
+    height: 80px;
+}
+
+
+.expanded_container{
+    background-color: var(--bgcolor);
+    position: fixed;
+    width: 30%;
+    bottom:40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: rgb(0 0 0 / 15%) 2px 2px 10px;
+    padding: 12px;
+    height: 170px;
+    animation-name:height;
+    animation-duration: 1s;
+}
+
+
+.icon_container{
+    cursor: pointer;
+}
+
+.subtotal_container{
+    border-bottom: 1px solid gray;
+    height: 67px;
+}
+
+.subtotal_container p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+.total_container{
+    padding-bottom: 15px;
+    padding-top: 15px;    
+}
+
+
+
+.total_container p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width : 750px) {
+    .subtotal_main_container{
+        width: 100%;
+    }
+    .expanded_container{
+        width: 100%;
+    }
+}

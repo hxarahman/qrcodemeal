@@ -5,7 +5,8 @@ export default function Card(props) {
   return (
     <div
       //   style={}
-      className="card_div"
+      className="card_div box_shadow_custom"
+      style={{backgroundColor: "rgba(255,255,255, 0.1)"}}
     >
       <div style={{ width: "65%" }}>
         <p className="first_para">{props.Heading}</p>

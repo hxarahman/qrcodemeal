@@ -8,6 +8,8 @@ import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 //import components
 import Header from "../../Components/header";
 import Cart_items from "../../Components/cards/cart_items/Cart_items";
+import Addtocard from '../../Components/checkoutbtn/index'
+import Input from '../../Components/inputs/inputText/index'
 
 const Index = () => {
     const [counter, setCounter] = useState(1)
@@ -67,6 +69,7 @@ const Index = () => {
             {/* add a note */}
             <p className="food_name" style={{ fontWeight: 'unset' }}>Add a note</p>
             {/* input */}
+            <Input style={{marginRight : '10px' , marginLeft : '10px' , marginBottom : '20px' }} />
             {/* inputend */}
             <div className="d-flex align-items-center justify-content-center">
                 {counter === 1 ?
@@ -77,6 +80,7 @@ const Index = () => {
                 <p className="counter">{counter}</p>
                 <AiFillPlusCircle onClick={() => setCounter(counter + 1)} color="yellow" fontSize={'40px'} />
             </div>
+            <Addtocard title='ADD TO CART' />
             {/* <button className="bottom">
     ayan
 </button> */}

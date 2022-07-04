@@ -16,6 +16,7 @@
     border: 0.25px solid var(--borderColor);
     padding: 10px;
     margin-top: 20px;
+    
 }
 
 
@@ -30,5 +31,90 @@
 
 .input-field-container{
     margin-top: -10px;
+    width: 100%;
+}
+
+.input-field-container-with-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rdx__input-container{
+    width: 360px !important;
+}
+
+.rdx__textInput{
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: var(--borderColor);
+}
+
+
+
+.rdx__month-container{
+    width: 360px;
+}
+
+
+.rdx__weekdayname-header{
+    width: 100% !important;
+}
+
+
+
+.rdx__weekday-name{
+    width: 13% !important;
+}
+
+.rdx__day{
+    width: 13% !important;
+}
+
+
+.rdx__header--default{
+
+}
+
+
+.rdx__day--selected{
+
+}
+
+
+.react-timekeeper{
+    width: 100% !important;
+}
+
+.react-timekeeper__clock-wrapper{
+    width: 100%;
+}
+
+
+.react-timekeeper__top-bar{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.react-tel-input:active{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.react-tel-input:focus{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none  !important;
+
+}
+
+
+.selected-flag:hover{
+    background-color: aqua;
 }
 

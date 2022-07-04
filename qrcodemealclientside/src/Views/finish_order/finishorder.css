@@ -64,3 +64,13 @@
 .label_section{
     margin-left: 12px;
 }
+
+
+.agree_text_area{
+    width: 80%;
+    padding-bottom: 130px;
+}
+
+.agree_text_area p {
+    font-size: 16px;
+}

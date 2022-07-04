@@ -3,9 +3,9 @@ body {
     margin: 0px;
 }
 
-.welcome-main {
-    margin-bottom: 50px;
-}
+/* .welcome-main {
+    /* margin-bottom: 50px; */
+
 
 .bgImage {
     background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80');
@@ -55,4 +55,16 @@ body {
     margin-left: 10px;
     margin-right: 10px;
     color: yellow;
+}
+
+
+.details_main_container{
+    padding: 12px !important;
+}
+
+
+
+.plus_minus_container{
+    margin-top: 20px;
+    padding-bottom: 60px;
 }

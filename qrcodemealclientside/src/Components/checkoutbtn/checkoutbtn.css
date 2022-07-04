@@ -1,7 +1,9 @@
 .checkoutbtn_container{
+
     width: 30%;
     position: fixed;
     bottom: 0px;
+
 }
 
 
@@ -9,13 +11,23 @@
     width:100%;
     border: none;
     outline: none;
-    height: 50px;
+    height: 55px;
     cursor: pointer;
     font-weight: bold;
+    padding: 15px;
+    margin-top: 30px;
 }
 
 
-.checkoutbtn:hover{
+.checkoutbtn:hover {
     opacity: .6;
+}
+
+
+
+@media only screen and (max-width : 750px) {
+    .checkoutbtn_container{
+        width: 100%;
+    }
 }
 

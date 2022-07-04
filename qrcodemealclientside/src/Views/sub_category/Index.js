@@ -150,9 +150,9 @@ const Index = () => {
                   </p>
                   <p className="dropDownVal">
                     {indexDropDown === Index ?
-                      <AiOutlineCaretDown />
-                      :
                       <AiOutlineCaretUp />
+                      :
+                      <AiOutlineCaretDown />
                     }
                   </p>
                 </div>

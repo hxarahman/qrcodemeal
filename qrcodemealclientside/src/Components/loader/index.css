@@ -1,3 +1,9 @@
+@keyframes opacity {
+    0% { opacity: .2;}
+    50% {opacity: 1;}
+    100% {opacity: .2;}
+}
+
 body {
     padding :0px;
     margin: 0px;
@@ -6,3 +12,11 @@ body {
 .main_div {
     height: 100vh;
 }
+
+
+.logo_img{
+    animation-name: opacity;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+

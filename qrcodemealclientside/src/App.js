@@ -9,17 +9,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Loader from "./Components/loader/Index";
 import Edit_cart from "./Views/edit_cart/Index";
-import Index from "./Views/product/Index";
+import Index from "./Views/finish_order/index";
 
 function App() {
   const [loading , setLoading] = useState(false)
   return loading ? <Loader /> :  (
     <div style={{ backgroundColor: "#7D141E" }} className="App">
       <div className="app-nested">
-
-
-        <FinishOrder />
-
+        <Menu />
       </div>
       <div className="null-box">mughees</div>
     </div>

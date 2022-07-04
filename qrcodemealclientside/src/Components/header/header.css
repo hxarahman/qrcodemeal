@@ -26,18 +26,40 @@ body {
     cursor: pointer;
 }
 
+.icon-container-disable{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
 .heading{
     margin : 0px;
     color: white;
     font-size: 20px;
+    padding : 0px;
 
-font-family: 'Arial';
-font-style: normal;
 font-weight: 700;
-font-size: 20px;
+font-size: 16px;
 line-height: 22px;
+/* width: 150%; */
+
+
 /* or 110% */
 
+}
+
+.title{
+    font-size: 14px !important;
+    margin : 0px;
+    color: white;
+    font-size: 20px;
+font-weight: 700;
+line-height: 22px;
 }
 
 
