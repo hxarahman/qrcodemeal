@@ -11,6 +11,7 @@ import "react-multi-carousel/lib/styles.css";
 //import components
 import Header from "../../Components/header";
 import Card from "../../Components/cards/Card";
+import { Link  , useNavigate} from "react-router-dom";
 
 
 
@@ -124,6 +125,8 @@ const imagesWithContent = [
 ];
 
 const Index = () => {
+  const navigation = useNavigate();
+
   const [index, setIndex] = useState(0);
   const responsive = {
     desktop: {
@@ -168,9 +171,9 @@ const Index = () => {
             containerClass="carousel-container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
             itemClass="carousel-item-padding-40-px"
-            afterChange={(e,{currentSlide})=> {
-              currentSlide < e ? setIndex(index -1) : setIndex(index+1)
-            } }
+            afterChange={(previous , {currentSlide})=> {
+                currentSlide < previous ? setIndex(index -1) : setIndex(index+1)
+            }}
           >
             {imagesWithContent.map((item, Index) => {
               return (
@@ -205,13 +208,14 @@ const Index = () => {
         ) : (
           card_detial.map((item, Index) => {
             return (
-              <div>
+              <Link style={{ textDecoration: 'none' }} to='/addtocart'>
                 <Card
                   Heading={item.heading}
                   Discription={item.discription}
                   Price={item.price}
+                  onClick={() => navigation('/addtocart')}
                 />
-              </div>
+              </Link>
             );
           })
         )}

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/context";
 import "./Card.css";
 
 export default function Card(props) {
+  const { role } = useContext(AuthContext)
   return (
     <div
       //   style={}
@@ -11,25 +13,27 @@ export default function Card(props) {
       <div style={{ width: "65%" }}>
         <p className="first_para">{props.Heading}</p>
         <p className="second_para">
-        {props.Discription}
+          {props.Discription}
         </p>
         <p className="third_para">{props.Price}</p>
-    
-        <div
-          //   style={}
-          className="add_to_cart"
-        >
+
+        {role === 1 &&
           <div
-         onClick={props.onClick}
-            style={{
-              backgroundColor: "yellow",
-              padding: "50px 50px",
-              marginTop: "-40%",
-              //   zIndex: "999",
-              transform: "rotate(135deg)",
-            }}
-          ></div>
-        </div>
+            //   style={}
+            className="add_to_cart"
+          >
+            <div
+              onClick={props.onClick}
+              style={{
+                backgroundColor: "yellow",
+                padding: "50px 50px",
+                marginTop: "-40%",
+                //   zIndex: "999",
+                transform: "rotate(135deg)",
+              }}
+            ></div>
+          </div>
+        }
       </div>
       <div>
         <img

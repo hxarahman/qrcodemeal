@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Index.css";
 // import logo from "../../assets/images/logo-white.png";
 import { FiFramer } from 'react-icons/fi'
@@ -10,8 +10,10 @@ import Header from "../../Components/header";
 import Cart_items from "../../Components/cards/cart_items/Cart_items";
 import Addtocard from '../../Components/checkoutbtn/index'
 import Input from '../../Components/inputs/inputText/index'
+import { AuthContext } from "../../context/context";
 
 const Index = () => {
+    const { role } = useContext(AuthContext)
     const [counter, setCounter] = useState(1)
     console.log("counter ", counter)
     const items = [
@@ -63,24 +65,31 @@ const Index = () => {
             {/* order detail  */}
 
             <div>
-                <Cart_items addOnsLimit={addOnsLimit} items={items} addOns={addOns} />
+                <Cart_items role={role} addOnsLimit={addOnsLimit} items={items} addOns={addOns} />
             </div>
 
             {/* add a note */}
-            <p className="food_name" style={{ fontWeight: 'unset' }}>Add a note</p>
-            {/* input */}
-            <Input style={{marginRight : '10px' , marginLeft : '10px' , marginBottom : '20px' }} />
-            {/* inputend */}
-            <div className="d-flex align-items-center justify-content-center">
-                {counter === 1 ?
-                    <AiFillMinusCircle color="yellow" fontSize={'40px'} style={{ opacity: 0.4 }} />
-                    :
-                    <AiFillMinusCircle onClick={() => setCounter(counter - 1)} color="yellow" fontSize={'40px'} />
-                }
-                <p className="counter">{counter}</p>
-                <AiFillPlusCircle onClick={() => setCounter(counter + 1)} color="yellow" fontSize={'40px'} />
-            </div>
-            <Addtocard title='ADD TO CART' />
+            {role === 1 &&
+                <div>
+
+                    <p className="food_name" style={{ fontWeight: 'unset' }}>Add a note</p>
+                    {/* input */}
+                    <Input style={{ marginRight: '10px', marginLeft: '10px', marginBottom: '20px' }} />
+                    {/* inputend */}
+                    <div className="d-flex align-items-center justify-content-center">
+                        {counter === 1 ?
+                            <AiFillMinusCircle color="yellow" fontSize={'40px'} style={{ opacity: 0.4 }} />
+                            :
+                            <AiFillMinusCircle onClick={() => setCounter(counter - 1)} color="yellow" fontSize={'40px'} />
+                        }
+                        <p className="counter">{counter}</p>
+                        <AiFillPlusCircle onClick={() => setCounter(counter + 1)} color="yellow" fontSize={'40px'} />
+                    </div>
+                    <Addtocard title='ADD TO CART' />
+                </div>
+            }
+
+
             {/* <button className="bottom">
     ayan
 </button> */}

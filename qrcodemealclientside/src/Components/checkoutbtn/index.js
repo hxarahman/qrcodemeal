@@ -11,8 +11,10 @@ const Index = (props) => {
     const backrgoundColor = "#7D141E"
 
     return(
-        <div className="checkoutbtn_container">
-            <button onClick={props.onClick} style={{backgroundColor:highlightedColor,color:backrgoundColor}} className="checkoutbtn">
+
+        <div onClick={props.onClick} className="checkoutbtn_container">
+            <button style={{backgroundColor:highlightedColor,color:backrgoundColor}} className="checkoutbtn">
+
                 {props.title}
             </button>
         </div>

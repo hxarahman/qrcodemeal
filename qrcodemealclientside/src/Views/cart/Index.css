@@ -1,0 +1,58 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.card_View {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    justify-content: space-between;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin: 15px 10px 0px 10px;
+}
+
+.cart_title {
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0px;
+    /* identical to box height, or 138% */
+    color: #FFFFFF;
+}
+
+.cart_content {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 22px;
+    margin: 0px;
+    margin-top: 10px;
+    /* identical to box height, or 157% */
+
+
+    color: #FFFF00;
+}
+
+.counter_view{
+    margin-top: 10px;
+}
+
+.counter {
+
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+/* or 157% */
+color: #FFFF00;
+}
+
+.image{
+    width: 60px;
+    height: 60px;
+}
+

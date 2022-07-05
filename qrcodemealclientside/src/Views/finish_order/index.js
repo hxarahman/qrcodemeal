@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 //import components
 import Header from '../../Components/header'
 import Input from '../../Components/inputs/inputText'
 import TextArea from '../../Components/inputs/textArea'
+
+import CheckoutBtn from '../../Components/checkoutbtn'
+import Timekeeper from 'react-timekeeper'
+
 import PhoneInput from '../../Components/inputs/phoneNumberInput'
 import DatePicker from '../../Components/datePicker'
 import SubtotalFooter from '../../Components/subtotalFooter'
@@ -11,18 +15,18 @@ import SubtotalFooter from '../../Components/subtotalFooter'
 
 //import icons
 
-import { GiCheckMark } from "react-icons/gi";
-import { RiSendPlaneFill } from "react-icons/ri";
-
+import { GiCheckMark } from 'react-icons/gi'
+import { RiSendPlaneFill } from 'react-icons/ri'
 
 //import css
 import './finishorder.css'
 
-
 const Index = () => {
+  const hightlitedColor = 'yellow'
+  const backgroundColor = '#7D141E'
 
-    const hightlitedColor = "yellow";
-    const backgroundColor = "#7D141E";
+
+
     const textColor = "white"
     const newDate = new Date();
     const currentDate = `${newDate.getFullYear()} / ${newDate.getDate()} / ${newDate.getMonth()}`
@@ -35,7 +39,6 @@ const Index = () => {
     const [phNumber, setPhNumbber] = useState("")
     const [address, setAddress] = useState("")
     const [date, setDate] = useState(currentDate)
-    const [time, setTime] = useState(currentTime)
     const [note , setNote] = useState("")
     
 
@@ -61,23 +64,25 @@ const Index = () => {
     const radioBtnOptions = [
         "ASAP ~ 30 Minutes", "Later"
     ]
-    const Done = () => {
-        return (
-            <div>Ayan</div>
-        )
-    }
 
 
 
 
-    return (
+  const [time, setTime] = useState('12:34pm')
 
+
+  return (
+    <div>
+      <Header toggle={true} back={true} title="Finish Order" />
+
+      <div className="finishorder_main">
         <div>
 
-            <Header toggle={true} back={true} title="Finish Order" />
+
+            {/* <Header toggle={true} back={true} title="Finish Order" /> */}
 
 
-            <div className="finishorder_main">
+            <div className="">
                 <div>
                     <div className="d-flex justify-content-center mt-4">
                         <p style={{ fontSize: 15, color: "white" }}>Order type : Delivery</p>
@@ -158,10 +163,12 @@ const Index = () => {
 
                 </div>
             </div>
-            <SubtotalFooter onClick={()=> submit()} title="PROCEED TO CHECKOUT" />
+
         </div>
-    )
+      </div>
+            <SubtotalFooter onClick={()=> submit()} title="PROCEED TO CHECKOUT" />
+    </div>
+  )
 }
 
-
-export default Index;
+export default Index
