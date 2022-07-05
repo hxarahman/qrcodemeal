@@ -22,7 +22,7 @@ body {
     border-radius: 4px;
     background-color: rgb(141, 39, 49);
     box-sizing: border-box;
-    box-shadow: rgb(0 0 0 / 15%) 2px 2px 5px;
+    box-shadow: rgb(0 0 0 / 50%) 2px 2px 5px;
     cursor: pointer;
 }
 

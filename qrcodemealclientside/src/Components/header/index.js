@@ -11,10 +11,10 @@ const Index = (props) => {
       <div className="">
         {props.back ? (
           <div onClick={props.onClick} className="icon-container">
-            <IoIosArrowBack color="rgba(255, 255, 255, .3)" size={20} />
+            <IoIosArrowBack color="rgba(255, 255, 255, .9)" size={20} />
           </div>
         ) : <div className="icon-container-disable">
-          <IoIosArrowBack color="rgb(141, 39, 49 , 0.1)" size={20} />
+          <IoIosArrowBack color="rgb(141, 39, 49 , 0.8)" size={20} />
         </div>}
       </div>
       <div >
@@ -25,7 +25,7 @@ const Index = (props) => {
       {!props.toggle ?
         <div className=" d-flex justify-content-end">
           <div className="icon-container">
-            <BiMenuAltRight color="rgba(255, 255, 255, .3)" size={20} />
+            <BiMenuAltRight color="rgba(255, 255, 255, .9)" size={20} />
           </div>
         </div>
         :
