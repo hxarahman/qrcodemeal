@@ -15,7 +15,7 @@ export default function Card(props) {
         <p className="second_para">
           {props.Discription}
         </p>
-        <p className="third_para">{props.Price}</p>
+        <p className="third_para">AED{props.Price}</p>
 
         {role === 1 &&
           <div
@@ -37,8 +37,8 @@ export default function Card(props) {
       </div>
       <div>
         <img
-          style={{ width: "100px", height: "100px", margin: "0px auto" }}
-          src="https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?b=1&k=20&m=1316145932&s=170667a&w=0&h=feyrNSTglzksHoEDSsnrG47UoY_XX4PtayUPpSMunQI="
+          style={{width:100,height:80, margin: "0px auto" }}
+          src={props.src}
         />
       </div>
 

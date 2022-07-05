@@ -27,6 +27,18 @@ const Index = () => {
             </div>
 
             <div>
+
+              <div className='my-4'>
+              <select className='language_dropdown'>
+                <option className='options'>
+                  English 
+                </option>
+                <option className='options'>
+                  Arabic
+                </option>
+              </select>
+              </div>
+
               <Link to="menu">
                 <RoundedButton onClick={() => setRole(1)} name="Delivery / Pickup" />
               </Link>
