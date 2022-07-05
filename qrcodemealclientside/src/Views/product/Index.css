@@ -6,10 +6,15 @@ body {
 
 
 .bgImage {
-    background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80');
     background-size: cover;
-    height: 250px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bgImage img{
+    width: 100%;
 }
 
 .food_name {
@@ -18,10 +23,8 @@ body {
     color: white;
     font-size: 20px;
     text-align: center;
-    margin-top: 10px;
     font-family: 'Nunito Sans';
     font-weight: 500;
-    margin-bottom: 10px;
 }
 
 .calories {

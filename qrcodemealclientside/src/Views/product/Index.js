@@ -1,102 +1,80 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Index.css";
-// import logo from "../../assets/images/logo-white.png";
 import { FiFramer } from 'react-icons/fi'
 import { IoIosWater } from 'react-icons/io'
 import { MdOutlineWaterDrop } from 'react-icons/md'
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
+import axios from "axios";
+
 //import components
 import Header from "../../Components/header";
 import Cart_items from "../../Components/cards/cart_items/Cart_items";
 import Addtocard from '../../Components/checkoutbtn/index'
 import Input from '../../Components/inputs/inputText/index'
 import { AuthContext } from "../../context/context";
+import Loader from "../../Components/loader/Index";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const Index = () => {
+
+
+    const highlightedColor = "yellow"
+
     const { role } = useContext(AuthContext)
     const [counter, setCounter] = useState(1)
-    console.log("counter ", counter)
-    const items = [
-        {
-            title: 'Medium portion(100 Calories)',
-            price: 'AED13.50'
-        },
-        {
-            title: 'Large portion(130 Calories)',
-            price: 'AED13.50'
-        },
-    ]
-    const addOnsLimit = ['Gazpacho', '(Min 2 - Max 5)']
-    const addOns = [
-        {
-            title: 'Loaded fries',
-            price: '+ AED13.50',
-        },
-        {
-            title: 'Loaded fries',
-            price: '+ AED13.50',
-        },
-    ]
-    return (
+    const [productDetail, setProductDetail] = useState()
+    const [price , setPrice] = useState("200")
+    const params = useParams()
+    const navigate = useNavigate()
+    const productApiCall = (id) => {
+        const idNumber = Number(id);
+
+        const token = "1|q83lSa3MuQ4b96AQY4fQ3TeQpAHW38uKm6HpZGpa"
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        axios.get(
+            'http://menu.msac.ae/api/v1/products',
+            config
+        ).then((res) => {
+            const allProducts = res.data.data;
+            const filteredProducts = allProducts.filter(product => product.id === idNumber)
+            console.log('filteredProducts', filteredProducts)
+            setProductDetail(filteredProducts)
+
+        })
+            .catch((e) => {
+                console.log(e)
+            })
+    }
+
+
+    useEffect(() => {
+        productApiCall(params.id)
+    }, [])
+
+
+    return (productDetail ?
         <div className="welcome-main">
+                <div className="position-absolute top-2">
+                <Header onClick={()=> navigate(-1)} toggle={true} back={true} />
+                </div>
             <div className="bgImage">
-                <Header toggle={true} back={true} />
+                <img src={productDetail[0].image.url} />
             </div>
-            <div>
-                <p className="food_name">Gaspacho</p>
-                <div className="d-flex align-items-center justify-content-center">
-                    <FiFramer style={{ color: 'white', fontSize: '15px' }} />
-                    <p className="calories">100 Calories</p>
-                </div>
-                <div style={{ marginTop: '10px' }} className="d-flex align-items-center justify-content-center">
-                    <div style={{ border: '1px solid yellow', borderRadius: 50, paddingRight: '5px', paddingLeft: '5px', paddingBottom: '2px', marginRight: '10px' }}>
-                        <MdOutlineWaterDrop color="yellow" />
-                    </div>
-                    <div style={{ border: '1px solid yellow', borderRadius: 50, paddingRight: '5px', paddingLeft: '5px', paddingBottom: '2px', marginRight: '10px' }}>
-                        <MdOutlineWaterDrop color="yellow" />
-                    </div>
-                    <div style={{ border: '1px solid yellow', borderRadius: 50, paddingRight: '5px', paddingLeft: '5px', paddingBottom: '2px' }}>
-                        <MdOutlineWaterDrop color="yellow" />
-                    </div>
-                </div >
-                <p className="food_name discription">Lorem Ipsum is not simply random text.</p>
+            <div className="my-3">
+                <p className="food_name">{productDetail[0].name}</p>
+                <p style={{color:highlightedColor}} className="food_name">AED {price}</p>
+                <p className="food_name discription">{productDetail[0].description}</p>
             </div>
 
-            {/* order detail  */}
-
-            <div>
-                <Cart_items role={role} addOnsLimit={addOnsLimit} items={items} addOns={addOns} />
-            </div>
-
-            {/* add a note */}
-            {role === 1 &&
-                <div>
-
-                    <p className="food_name" style={{ fontWeight: 'unset' }}>Add a note</p>
-                    {/* input */}
-                    <Input style={{ marginRight: '10px', marginLeft: '10px', marginBottom: '20px' }} />
-                    {/* inputend */}
-                    <div className="d-flex align-items-center justify-content-center">
-                        {counter === 1 ?
-                            <AiFillMinusCircle color="yellow" fontSize={'40px'} style={{ opacity: 0.4 }} />
-                            :
-                            <AiFillMinusCircle onClick={() => setCounter(counter - 1)} color="yellow" fontSize={'40px'} />
-                        }
-                        <p className="counter">{counter}</p>
-                        <AiFillPlusCircle onClick={() => setCounter(counter + 1)} color="yellow" fontSize={'40px'} />
-                    </div>
-                    <Addtocard title='ADD TO CART' />
-                </div>
-            }
-
-
-            {/* <button className="bottom">
-    ayan
-</button> */}
 
 
         </div>
-    );
+        : <Loader />
+    )
 };
 
 export default Index;

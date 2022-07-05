@@ -1,54 +1,50 @@
 .card_div {
-    display: flex;
-    padding: 10px 15px;
-    justify-content: space-between;
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  padding: 12px 17px;
+  justify-content: space-between;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
 
-.box_shadow_custom{
+.box_shadow_custom {
   box-shadow: rgb(0 0 0 / 15%) 2px 2px 5px;
 }
 
-  .first_para  {
-    color: white;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    padding: 0px;
-  }
-  .second_para {
-    color: white;
-    font-size: 14px;
-font-family:  Arial, Helvetica, sans-serif;
-font-weight:  400;
-margin-top: -10px;
-margin-bottom: 5px;
-  }
+.first_para {
+  color: white;
+  font-size: 18px;
+  font-family: 'Nunito Sans';
+  font-weight: 500;
+  padding: 0px;
+}
 
-  .third_para {
-    color: yellow;
-    font-size: 14px;
-    font-family:  Arial, Helvetica, sans-serif;
-    font-weight:  400;
+.second_para {
+  color: white;
+  font-size: 14px;
+  font-family: 'Nunito Sans';
+  font-weight: 400;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  opacity: .8;
+}
 
-  }
+.third_para {
+  color: yellow;
+  font-size: 16px;
+  font-family: 'Nunito Sans';
+  font-weight: 500;
+  margin-top: 8px;
+}
 
-  .icon_image {
-      width: 24px;
-      height: 24px;
 
-    margin: 0px 10px 0px 0px;
-    border-radius: 50px;
-  }
-
-  .add_to_cart {
-      position: absolute;
-      left: 92% ;
-      top: 100%;
-    /* position: absolute, */
-    /* left: "92%",
+.add_to_cart {
+  position: absolute;
+  left: 92%;
+  top: 100%;
+  /* position: absolute, */
+  /* left: "92%",
     top: "100%", */
-  }
+}

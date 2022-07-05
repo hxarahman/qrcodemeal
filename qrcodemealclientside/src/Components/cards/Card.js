@@ -9,13 +9,14 @@ export default function Card(props) {
       //   style={}
       className="card_div box_shadow_custom"
       style={{backgroundColor: "rgba(255,255,255, 0.1)"}}
+      onClick={props.onClick}
     >
       <div style={{ width: "65%" }}>
         <p className="first_para">{props.Heading}</p>
         <p className="second_para">
           {props.Discription}
         </p>
-        <p className="third_para">AED{props.Price}</p>
+        <p className="third_para">AED {props.Price}</p>
 
         {role === 1 &&
           <div
@@ -37,7 +38,7 @@ export default function Card(props) {
       </div>
       <div>
         <img
-          style={{width:100,height:80, margin: "0px auto" }}
+          style={{width:80, margin: "0px auto" }}
           src={props.src}
         />
       </div>

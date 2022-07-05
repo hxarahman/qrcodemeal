@@ -10,7 +10,7 @@ const Index = (props) => {
     <div className="header-main">
       <div className="">
         {props.back ? (
-          <div className="icon-container">
+          <div onClick={props.onClick} className="icon-container">
             <IoIosArrowBack color="rgba(255, 255, 255, .3)" size={20} />
           </div>
         ) : <div className="icon-container-disable">

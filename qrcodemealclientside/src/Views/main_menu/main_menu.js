@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./main_menu.css";
-import logo from "../../assets/images/logo-white.png";
-import RoundedButton from "../../Components/button/roundedBtn";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
-import Loader from "../../Components/loader/Index";
+import { SpinnerCircular } from 'spinners-react';
+import { AuthContext } from "../../context/context";
 
 
 //import components
+import Loader from "../../Components/loader/Index";
 import Header from "../../Components/header";
 import Card from "../../Components/cards/Card";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,11 +17,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 const Index = () => {
+
+
+  const { highlightedColor } = useContext(AuthContext)
+  const [ itemId , setItemId] = useState(1)
   const navigation = useNavigate();
   const [category, setCategory] = useState()
 
   const [showProducts, setShowProducts] = useState()
-
   const [index, setIndex] = useState(0);
   const token = "1|q83lSa3MuQ4b96AQY4fQ3TeQpAHW38uKm6HpZGpa"
   const config = {
@@ -34,7 +37,6 @@ const Index = () => {
       config
     ).then((res) => {
       setCategory(res.data.data)
-      console.log(res.data.data)
     })
       .catch((e) => {
         console.log(e)
@@ -48,7 +50,6 @@ const Index = () => {
     ).then((res) => {
       const allProducts = res.data.data;
       const filteredProducts = allProducts.filter(product => product.category_id === id)
-      console.log('filteredProducts', filteredProducts)
       setShowProducts(filteredProducts)
 
     })
@@ -60,30 +61,30 @@ const Index = () => {
 
   useEffect(() => {
     categoryApiCall()
-    productApiCall(1)
+    productApiCall(itemId)
   }, [])
 
 
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
+      items: 2,
       slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 3,
+      items: 2,
       slidesToSlide: 1 // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 3,
+      items: 2,
       slidesToSlide: 1 // optional, default to 1.
     }
   };
   return category ? (
     <div className="welcome-main">
-      <Header />
+      <Header toggle="false" />
       <div className="container-fluid">
         <div>
           <h5 className="main_menu">Main Menu</h5>
@@ -100,30 +101,44 @@ const Index = () => {
             responsive={responsive}
             ssr={true} // means to render carousel on server-side.
             infinite={false}
-            autoPlaySpeed={1000}
             keyBoardControl={true}
+            autoPlaySpeed={1000}
             customTransition="all .5"
             transitionDuration={500}
             containerClass="carousel-container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
             itemClass="carousel-item-padding-40-px"
             afterChange={(previous, { currentSlide }) => {
-              currentSlide < previous ? setIndex(index - 1) : setIndex(index + 1)
+              const minus = ()=>{
+                setIndex(index -1)
+                setItemId(itemId -1)
+                productApiCall(itemId - 1)
+              }
+
+              const plus = ()=>{
+                setIndex(index +1)
+                setItemId(itemId + 1)
+                productApiCall(itemId + 1)
+
+              }
+              currentSlide < previous ? minus() : plus()
             }}
+            centerMode={true}
           >
             {category.map((item, Index) => {
               return (
                 <div className="main_menu_items" onClick={() => {
                   productApiCall(item.id)
                   setIndex(Index)
+                  setItemId(item.id)
                 }}>
                   <div className="nested_container">
                     <img className="images" src={item.image.url} />
-                    <div className="content_section" style={{ borderColor: index === Index ? "yellow" : "transparent" }}>
+                    <div className="content_section" style={{ borderColor: index === Index ? highlightedColor : "transparent" }}>
                       <p
                         className="img_content"
                         style={{
-                          color: index === Index ? "yellow" : "white",
+                          color: index === Index ? highlightedColor : "white",
                         }}
                       >
                         {item.name}
@@ -140,25 +155,25 @@ const Index = () => {
         {showProducts ? <div>
           <h5 className="main_menu">All Item</h5>
           <h5 className="main_menu_child">Fresh and organic ingredients</h5>
-        </div>:null}
+        </div> : null}
         {/* box  */}
-        {showProducts ?   showProducts.length === 0 ? (
+        {showProducts ? showProducts.length === 0 ? (
           <p className="no_avaliable">No Items are Available Now!</p>
         ) : (
           showProducts?.map((item, Index) => {
             return (
-              <Link style={{ textDecoration: 'none' }} to='/addtocart'>
-                <Card
-                  Heading={item.name}
-                  Discription={item.description}
-                  Price="200"
-                  src={item.image.url}
-                  onClick={() => navigation('/addtocart')}
-                />
-              </Link>
+              <Card
+                Heading={item.name}
+                Discription={item.description}
+                Price="200"
+                src={item.image.url}
+                onClick={() => navigation('/productdetail/' + item.id)}
+              />
             );
           })
-        ):null}
+        ) :  <div className="d-flex justify-content-center my-4">
+        <SpinnerCircular thickness={250} speed={250} color={highlightedColor} />
+      </div>}
         <p className="powered_by">Powerd by QR Code Menu</p>
       </div>
     </div>

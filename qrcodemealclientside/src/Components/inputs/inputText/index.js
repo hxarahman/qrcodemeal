@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoMdTime } from "react-icons/io";
-import Timekeeper from 'react-timekeeper';
-import DatePicker from 'react-date-picker'
 
 //import css
 
@@ -25,28 +23,7 @@ const Index = (props) => {
                     value={props.name === "date" ? props.placeholder : null}
                     onChange={(e)=> setState(e.target.value)}
                 />
-                {props.icon ?
-                    props.name === 'date' ?
-                        <div>
-                            <IoIosArrowDown color="white" size={25} />
-                        </div>
-                        :
-                        <div>
-                            <IoMdTime color="white" size={25} />
-                        </div>
-                    : null
-                }
-
-
             </div>
-            {timeModalVisible &&
-                <div style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Timekeeper
-                    onChange={(date)=> setState(date.formatted12)}
-                    />
-                </div>
-            }
-
         </div>
     )
 }

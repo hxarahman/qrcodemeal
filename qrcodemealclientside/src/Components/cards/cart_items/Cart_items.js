@@ -10,7 +10,6 @@ export default function Cart_items(props) {
     const [index, setIndex] = useState(null)
     const [indexAddOns, setIndexAddOns] = useState(null)
     const { role } = useContext(AuthContext)
-    console.log(role)
 
     return (
         <div
