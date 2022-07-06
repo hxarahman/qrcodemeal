@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiMenuAltRight } from "react-icons/bi";
 import "./header.css";
+import { AuthContext } from "../../context/context";
 
 const Index = (props) => {
-  const [back, setBack] = useState(false);
-
+  const [back,  setBack] = useState(false);
+  const {backgroundColor , textColor , highlightedColor} = useContext(AuthContext)
   return (
     <div className="header-main">
       <div className="">
         {props.back ? (
-          <div onClick={props.onClick} className="icon-container">
-            <IoIosArrowBack color="rgba(255, 255, 255, .9)" size={20} />
+          <div style={{backgroundColor:backgroundColor}} onClick={props.onClick} className="icon-container">
+            <IoIosArrowBack color={textColor}  size={20} />
           </div>
-        ) : <div className="icon-container-disable">
-          <IoIosArrowBack color="rgb(141, 39, 49 , 0.8)" size={20} />
-        </div>}
+        ) : null}
       </div>
       <div >
         <p className="heading">
@@ -24,14 +23,12 @@ const Index = (props) => {
       </div>
       {!props.toggle ?
         <div className=" d-flex justify-content-end">
-          <div className="icon-container">
-            <BiMenuAltRight color="rgba(255, 255, 255, .9)" size={20} />
+          <div style={{backgroundColor:backgroundColor}} className="icon-container">
+            <BiMenuAltRight color={textColor}  size={20} />
           </div>
         </div>
         :
-        <div className="icon-container-disable">
-          <BiMenuAltRight color="rgb(141, 39, 49 , 0.1)" size={20} />
-        </div>
+       null
       }
 
     </div>

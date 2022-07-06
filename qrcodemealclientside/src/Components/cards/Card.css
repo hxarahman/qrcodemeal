@@ -14,7 +14,6 @@
 }
 
 .first_para {
-  color: white;
   font-size: 18px;
   font-family: 'Nunito Sans';
   font-weight: 500;
@@ -22,7 +21,6 @@
 }
 
 .second_para {
-  color: white;
   font-size: 14px;
   font-family: 'Nunito Sans';
   font-weight: 400;
@@ -32,7 +30,6 @@
 }
 
 .third_para {
-  color: yellow;
   font-size: 16px;
   font-family: 'Nunito Sans';
   font-weight: 500;

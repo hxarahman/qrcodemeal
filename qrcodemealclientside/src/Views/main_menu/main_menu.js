@@ -18,15 +18,15 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Index = () => {
 
-
-  const { highlightedColor } = useContext(AuthContext)
-  const [ itemId , setItemId] = useState(1)
+  const { highlightedColor, backgroundColor, textColor , setBackgroundColor , setHighlightedColor , setTextColor } = useContext(AuthContext)
+  const [itemId, setItemId] = useState(11)
   const navigation = useNavigate();
   const [category, setCategory] = useState()
-
+  const [pageTitle , setPageTitle] = useState()
+  const [shortDescription , setShortDescription] = useState()
   const [showProducts, setShowProducts] = useState()
   const [index, setIndex] = useState(0);
-  const token = "1|q83lSa3MuQ4b96AQY4fQ3TeQpAHW38uKm6HpZGpa"
+  const token = "1|5hNVItwOA0FikjYvxSnXcoqQKWg1pROS1SFhHWCv"
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
@@ -58,6 +58,7 @@ const Index = () => {
       })
   }
 
+ 
 
   useEffect(() => {
     categoryApiCall()
@@ -83,13 +84,13 @@ const Index = () => {
     }
   };
   return category ? (
-    <div className="welcome-main">
+    <div style={{ backgroundColor: backgroundColor, height: "100%" }} className="welcome-main">
       <Header toggle="false" />
       <div className="container-fluid">
         <div>
-          <h5 className="main_menu">Main Menu</h5>
-          <h5 className="main_menu_child">
-            All your favorites available for delivery & pick-up!
+          <h5 style={{ color: highlightedColor }} className="main_menu">{pageTitle}</h5>
+          <h5 style={{ color: textColor }} className="main_menu_child">
+            {shortDescription}
           </h5>
         </div>
         {/* images */}
@@ -109,15 +110,17 @@ const Index = () => {
             removeArrowOnDeviceType={["tablet", "mobile"]}
             itemClass="carousel-item-padding-40-px"
             afterChange={(previous, { currentSlide }) => {
-              const minus = ()=>{
-                setIndex(index -1)
-                setItemId(itemId -1)
+              const minus = () => {
+                setIndex(index - 1)
+                setItemId(itemId - 1)
+                setShowProducts(false)
                 productApiCall(itemId - 1)
               }
 
-              const plus = ()=>{
-                setIndex(index +1)
+              const plus = () => {
+                setIndex(index + 1)
                 setItemId(itemId + 1)
+                setShowProducts(false)
                 productApiCall(itemId + 1)
 
               }
@@ -128,6 +131,7 @@ const Index = () => {
             {category.map((item, Index) => {
               return (
                 <div className="main_menu_items" onClick={() => {
+                  setShowProducts(false)
                   productApiCall(item.id)
                   setIndex(Index)
                   setItemId(item.id)
@@ -138,7 +142,7 @@ const Index = () => {
                       <p
                         className="img_content"
                         style={{
-                          color: index === Index ? highlightedColor : "white",
+                          color: index === Index ? highlightedColor : textColor,
                         }}
                       >
                         {item.name}
@@ -152,13 +156,15 @@ const Index = () => {
         </div>
         {/* //// */}
 
-        {showProducts ? <div>
-          <h5 className="main_menu">All Item</h5>
-          <h5 className="main_menu_child">Fresh and organic ingredients</h5>
-        </div> : null}
+        {showProducts?.length != 0 ? <div>
+          <h5 style={{color:highlightedColor}} className="main_menu">All Item</h5>
+          <h5 style={{color:highlightedColor}} className="main_menu_child">Fresh and organic ingredients</h5>
+        </div> : <div>
+          <h5 style={{color:highlightedColor}} className="main_menu">No Item</h5>
+        </div>}
         {/* box  */}
         {showProducts ? showProducts.length === 0 ? (
-          <p className="no_avaliable">No Items are Available Now!</p>
+          <p style={{ color: textColor }} className="no_avaliable">No Items are Available Now!</p>
         ) : (
           showProducts?.map((item, Index) => {
             return (
@@ -171,10 +177,10 @@ const Index = () => {
               />
             );
           })
-        ) :  <div className="d-flex justify-content-center my-4">
-        <SpinnerCircular thickness={250} speed={250} color={highlightedColor} />
-      </div>}
-        <p className="powered_by">Powerd by QR Code Menu</p>
+        ) : <div className="d-flex justify-content-center my-4">
+          <SpinnerCircular thickness={250} speed={250} color={highlightedColor} />
+        </div>}
+        <p style={{ color: textColor }} className="powered_by">Powerd by QR Code Menu</p>
       </div>
     </div>
   ) : <Loader />

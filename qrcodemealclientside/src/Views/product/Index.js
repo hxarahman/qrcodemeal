@@ -18,22 +18,18 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const Index = () => {
 
-
-    const highlightedColor = "yellow"
-
-    const { role } = useContext(AuthContext)
-    const [counter, setCounter] = useState(1)
+    const { role, highlightedColor, backgroundColor, textColor , setBackgroundColor , setHighlightedColor , setTextColor } = useContext(AuthContext)
     const [productDetail, setProductDetail] = useState()
     const [price , setPrice] = useState("200")
     const params = useParams()
     const navigate = useNavigate()
+    const token = "1|5hNVItwOA0FikjYvxSnXcoqQKWg1pROS1SFhHWCv"
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
     const productApiCall = (id) => {
         const idNumber = Number(id);
 
-        const token = "1|q83lSa3MuQ4b96AQY4fQ3TeQpAHW38uKm6HpZGpa"
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
 
         axios.get(
             'http://menu.msac.ae/api/v1/products',
@@ -41,7 +37,6 @@ const Index = () => {
         ).then((res) => {
             const allProducts = res.data.data;
             const filteredProducts = allProducts.filter(product => product.id === idNumber)
-            console.log('filteredProducts', filteredProducts)
             setProductDetail(filteredProducts)
 
         })
@@ -50,6 +45,7 @@ const Index = () => {
             })
     }
 
+    
 
     useEffect(() => {
         productApiCall(params.id)
@@ -57,7 +53,7 @@ const Index = () => {
 
 
     return (productDetail ?
-        <div className="welcome-main">
+        <div style={{backgroundColor:backgroundColor,height:"100%"}} className="welcome-main">
                 <div className="position-absolute top-2">
                 <Header onClick={()=> navigate(-1)} toggle={true} back={true} />
                 </div>
@@ -65,9 +61,9 @@ const Index = () => {
                 <img src={productDetail[0].image.url} />
             </div>
             <div className="my-3">
-                <p className="food_name">{productDetail[0].name}</p>
+                <p style={{color:textColor}} className="food_name">{productDetail[0].name}</p>
                 <p style={{color:highlightedColor}} className="food_name">AED {price}</p>
-                <p className="food_name discription">{productDetail[0].description}</p>
+                <p style={{color:textColor}} className="food_name discription">{productDetail[0].description}</p>
             </div>
 
 

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Addtocart from '../Views/product/Index'
 import Menu from '../Views/main_menu/main_menu'
 import Subcategory from '../Views/sub_category/Index'
+import { useContext } from 'react'
+import { AuthContext } from '../context/context'
 // import your route components too
 
 const Index = () => {
