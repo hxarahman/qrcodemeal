@@ -10,7 +10,6 @@ const Index = ()=>{
 
     return(
         <div style={{backgroundColor:backgroundColor}} className="nulBox-nested">
-            Mughees
         </div>
     )
 }

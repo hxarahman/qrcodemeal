@@ -7,6 +7,8 @@ export const AuthProvider = props => {
   const [highlightedColor , setHighlightedColor] = useState("#ee2c30")
   const [backgroundColor , setBackgroundColor ] = useState('#FFFFFF')
   const [textColor , setTextColor] = useState("#575962")
+  const [pageTitle , setPageTitle] = useState()
+  const [shortDescription , setShortDescription] = useState()
   return (
     <AuthContext.Provider
       value={{
@@ -16,7 +18,11 @@ export const AuthProvider = props => {
         setHighlightedColor,
         backgroundColor,
         setBackgroundColor,
-        textColor,setTextColor
+        textColor,setTextColor,
+        pageTitle,
+        setPageTitle,
+        shortDescription,
+        setShortDescription
       }}>
       {props.children}
     </AuthContext.Provider>

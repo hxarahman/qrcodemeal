@@ -7,7 +7,7 @@ const Loader = () => {
   const {backgroundColor} = useContext(AuthContext)
   const [index, setIndex] = useState(0);
   return (
-    <div style={{backgroundColor:backgroundColor}} class="d-flex align-items-center  justify-content-center main_div">
+    <div style={{backgroundColor:backgroundColor}} className="d-flex align-items-center  justify-content-center main_div">
       <img className="logo_img" src={logo} style={{ width : '100px' }} />
     </div>
   );

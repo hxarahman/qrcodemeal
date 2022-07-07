@@ -18,7 +18,7 @@ import {AuthContext} from './context/context'
 
 function App() {
 
-  const { role, highlightedColor, backgroundColor, textColor , setBackgroundColor , setHighlightedColor , setTextColor } = useContext(AuthContext)
+  const { backgroundColor, setBackgroundColor , setHighlightedColor , setTextColor , setShortDescription , setPageTitle  } = useContext(AuthContext)
 
 
   const token = "1|5hNVItwOA0FikjYvxSnXcoqQKWg1pROS1SFhHWCv"
@@ -35,6 +35,8 @@ function App() {
       setBackgroundColor(res.data.data[0].background_color)
       setTextColor(res.data.data[0].text_color)
       setHighlightedColor(res.data.data[0].highlight_color)
+      setShortDescription(res.data.data[0].short_description)
+      setPageTitle(res.data.data[0].page_title)
     })
       .catch((e) => {
         console.log(e)

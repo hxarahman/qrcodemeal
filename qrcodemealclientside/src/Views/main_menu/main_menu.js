@@ -18,19 +18,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Index = () => {
 
-  const { highlightedColor, backgroundColor, textColor , setBackgroundColor , setHighlightedColor , setTextColor } = useContext(AuthContext)
+  const { highlightedColor, backgroundColor, textColor, pageTitle, shortDescription } = useContext(AuthContext)
   const [itemId, setItemId] = useState(11)
   const navigation = useNavigate();
   const [category, setCategory] = useState()
-  const [pageTitle , setPageTitle] = useState()
-  const [shortDescription , setShortDescription] = useState()
+  const [currentCategory, setCurrentCategorry] = useState("")
+  const [currentCategoryDescriotion, setCurrentCategoryDesctiption] = useState()
   const [showProducts, setShowProducts] = useState()
   const [index, setIndex] = useState(0);
   const token = "1|5hNVItwOA0FikjYvxSnXcoqQKWg1pROS1SFhHWCv"
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
-  const categoryApiCall = () => {
+  const categoryApiCall = (index) => {
 
     axios.get(
       'http://menu.msac.ae/api/v1/categories',
@@ -58,12 +58,13 @@ const Index = () => {
       })
   }
 
- 
+
 
   useEffect(() => {
-    categoryApiCall()
+    categoryApiCall(0)
     productApiCall(itemId)
   }, [])
+
 
 
   const responsive = {
@@ -130,7 +131,7 @@ const Index = () => {
           >
             {category.map((item, Index) => {
               return (
-                <div className="main_menu_items" onClick={() => {
+                <div key={Index} className="main_menu_items" onClick={() => {
                   setShowProducts(false)
                   productApiCall(item.id)
                   setIndex(Index)
@@ -156,12 +157,10 @@ const Index = () => {
         </div>
         {/* //// */}
 
-        {showProducts?.length != 0 ? <div>
-          <h5 style={{color:highlightedColor}} className="main_menu">All Item</h5>
-          <h5 style={{color:highlightedColor}} className="main_menu_child">Fresh and organic ingredients</h5>
-        </div> : <div>
-          <h5 style={{color:highlightedColor}} className="main_menu">No Item</h5>
-        </div>}
+        {showProducts ? <div>
+          <h5 style={{ color: highlightedColor }} className="main_menu">{category[index].name}</h5>
+          <h5 style={{ color: highlightedColor }} className="main_menu_child">{category[index].description}</h5>
+        </div> : null}
         {/* box  */}
         {showProducts ? showProducts.length === 0 ? (
           <p style={{ color: textColor }} className="no_avaliable">No Items are Available Now!</p>
@@ -169,6 +168,7 @@ const Index = () => {
           showProducts?.map((item, Index) => {
             return (
               <Card
+                key={Index}
                 Heading={item.name}
                 Discription={item.description}
                 Price="200"
@@ -180,7 +180,7 @@ const Index = () => {
         ) : <div className="d-flex justify-content-center my-4">
           <SpinnerCircular thickness={250} speed={250} color={highlightedColor} />
         </div>}
-        <p style={{ color: textColor }} className="powered_by">Powerd by QR Code Menu</p>
+        <p style={{ color: textColor }} className="powered_by">Powerd by Msac solutions</p>
       </div>
     </div>
   ) : <Loader />
