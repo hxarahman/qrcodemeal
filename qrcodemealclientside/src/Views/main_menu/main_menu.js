@@ -51,7 +51,7 @@ const Index = () => {
       const allProducts = res.data.data;
       const filteredProducts = allProducts.filter(product => product.category_id === id)
       setShowProducts(filteredProducts)
-
+      console.log(res.data)
     })
       .catch((e) => {
         console.log(e)
@@ -171,7 +171,7 @@ const Index = () => {
                 key={Index}
                 Heading={item.name}
                 Discription={item.description}
-                Price="200"
+                Price={item.price}
                 src={item.image.url}
                 onClick={() => navigation('/productdetail/' + item.id)}
               />

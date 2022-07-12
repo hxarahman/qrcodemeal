@@ -20,7 +20,6 @@ const Index = () => {
 
     const { role, highlightedColor, backgroundColor, textColor , setBackgroundColor , setHighlightedColor , setTextColor } = useContext(AuthContext)
     const [productDetail, setProductDetail] = useState()
-    const [price , setPrice] = useState("200")
     const params = useParams()
     const navigate = useNavigate()
     const token = "1|5hNVItwOA0FikjYvxSnXcoqQKWg1pROS1SFhHWCv"
@@ -62,7 +61,7 @@ const Index = () => {
             </div>
             <div className="my-3">
                 <p style={{color:textColor}} className="food_name">{productDetail[0].name}</p>
-                <p style={{color:highlightedColor}} className="food_name">AED {price}</p>
+                <p style={{color:highlightedColor}} className="food_name">AED {productDetail[0].price}</p>
                 <p style={{color:textColor}} className="food_name discription">{productDetail[0].description}</p>
             </div>
 
